@@ -1,4 +1,3 @@
-import Data.Sequence ( (|>), ViewL( (:<) ) )
 import qualified Data.Sequence as Seq
 import qualified Data.Foldable as F
 import Safe
@@ -16,7 +15,10 @@ printTail lines file =
       doWork :: Handle -> IO ()
       doWork h =
           do list <- collectLines lines h
-             mapM_ (\bs -> BS.hPut stdout bs >> BS.hPut stdout newline) list
+             mapM_ printLine list
+      printLine bs =
+          do BS.hPut stdout bs
+             BS.hPut stdout newline
       newline = BS.pack [10]
 
 collectLines :: Int -> Handle -> IO [BS.ByteString]
@@ -27,13 +29,13 @@ collectLines lines handle = loop Seq.empty
              if isEof
              then return (F.toList acc)
              else do l <- BS.hGetLine handle
-                     loop (trim (acc |> l))
+                     loop (trim (acc Seq.|> l))
       trim seq =
           if Seq.length seq <= lines
           then seq
           else case Seq.viewl seq of
                  Seq.EmptyL -> error ("Bug in tail: argument to -n should not be negative")
-                 _ :< rest -> rest
+                 _ Seq.:< rest -> rest
 
 data TailOpts
     = TailOpts
