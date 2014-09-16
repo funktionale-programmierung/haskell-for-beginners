@@ -1,2 +1,2 @@
-Hallo Umlaute: äöüß!
-auch in Großbuchstaben: ÄÖÜ
+Hallo Umlaut: ä!
+auch in Großbuchstaben: Ö
