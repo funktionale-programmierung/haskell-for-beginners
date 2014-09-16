@@ -11,7 +11,6 @@ cabal-version:       >=1.10
 
 executable tail
   main-is:             Tail.hs
-<<<<<<< HEAD
   build-depends:       base >=4.6 && <5, containers, bytestring, safe
   hs-source-dirs:      src
   default-language:    Haskell2010
@@ -19,10 +18,5 @@ executable tail
 executable view-ascii
   main-is:             ViewAscii.hs
   build-depends:       base >=4.6 && <5, bytestring
-=======
-  -- other-modules:       
-  -- other-extensions:    
-  build-depends:       base >=4.6 && <5, containers, bytestring, safe
->>>>>>> 818c3a54fef841386049a4bd9911c677e11793fe
   hs-source-dirs:      src
   default-language:    Haskell2010
