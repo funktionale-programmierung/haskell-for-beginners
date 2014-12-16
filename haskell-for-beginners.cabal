@@ -17,6 +17,25 @@ executable tail
 
 executable view-ascii
   main-is:             ViewAscii.hs
-  build-depends:       base >=4.6 && <5, bytestring
+  build-depends:       base >=4.6 && <5, bytestring, text
+  hs-source-dirs:      src
+  default-language:    Haskell2010
+
+executable jsonpp
+  main-is:             JsonPretty.hs
+  build-depends:       base > 4.6 && < 5, text, aeson < 0.8, pretty,
+                       bytestring, vector, unordered-containers, HTF
+  hs-source-dirs:      src
+  default-language:    Haskell2010
+
+executable config-string
+  main-is:             ConfigFileString.hs
+  build-depends:       base > 4.6 && < 5
+  hs-source-dirs:      src
+  default-language:    Haskell2010
+
+executable config-text
+  main-is:             ConfigFileText.hs
+  build-depends:       base > 4.6 && < 5, text
   hs-source-dirs:      src
   default-language:    Haskell2010
